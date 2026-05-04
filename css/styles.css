@@ -564,3 +564,33 @@ select.input-field {
   transform: translateY(-2px);
   box-shadow: 2px 2px 0px rgba(255,182,193,0.3);
 }
+
+/* Specific styles for the Digital Habits Quiz */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  padding: 10px 15px;
+  border: 2px solid #e6e6fa;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Nunito', sans-serif;
+  color: #555;
+}
+
+.quiz-option:hover {
+  background: #f0f8ff;
+  border-color: #87ceeb;
+}
+
+input[type="radio"] {
+  accent-color: #ff69b4;
+  transform: scale(1.2);
+}
+
+#resultDashboard {
+  display: none;
+}

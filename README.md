@@ -32,13 +32,9 @@ EchoScope features a unique, hand-drawn "kid doodle" aesthetic with:
 ## Project Structure 📁
 
 *   `index.html`: The main dashboard/home page.
-*   `tasks.html` & `tasks.js`: The To-Do list functionality.
-*   `analysis.html`: The screen time analysis page.
-*   `timer.html` & `timer.js`: The Pomodoro focus timer.
-*   `stopwatch.html` & `stopwatch.js`: The active time stopwatch.
-*   `login.html`: A simulated login system saving progress locally.
-*   `about.html`: Information about the project.
-*   `styles.css`: All the styling and doodle animations.
-*   `random-bg.js`: Scripts for dynamic background effects.
+*   `tasks.html`, `analysis.html`, `timer.html`, `stopwatch.html`, `login.html`, `about.html`: Functional pages.
+*   `css/styles.css`: The global stylesheet containing all app styles, animations, and quiz-specific layouts.
+*   `js/`: Directory containing JavaScript files for tasks, timers, stopwatch, login, and analysis logic.
+*   `assets/`: Directory for images like `profile-pic.png`.
 
 Enjoy staying focused and productive with EchoScope! 🌱
