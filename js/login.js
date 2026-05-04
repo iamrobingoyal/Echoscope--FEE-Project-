@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
   if (username) {
     // Save the user in localStorage to simulate login
     localStorage.setItem('echoscope_user', username);
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
   }
 });
 
