@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoScope - Stopwatch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Old nav removed -->
+
+    <div class="task-header" style="justify-content: center; border: none;">
+      <h2 style="margin-bottom: 0;">Stopwatch</h2>
+    </div>
+
+    <div class="stopwatch-card">
+      <div class="stopwatch-value" id="stopwatchDisplay">00:00.00</div>
+      <div class="timing-label" style="color: #4f46e5;">Time Elapsed</div>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; margin-top: 15px;">
+      <button class="btn" id="startBtn" style="background-color: #10b981;">Start</button>
+      <button class="btn outline" id="lapBtn">Lap</button>
+      <button class="btn outline" id="stopBtn" style="color: #ef4444; border-color: #fca5a5;">Stop</button>
+    </div>
+
+    <div style="text-align: center; margin-top: 15px;">
+      <button class="btn outline" id="syncBtn" style="font-size: 0.8rem; padding: 6px 12px;">☁️ Sync Data</button>
+      <p id="syncStatus" style="font-size: 0.8rem; color: #64748b; margin-top: 5px;"></p>
+    </div>
+
+    <div class="task-list" id="lapList" style="margin-top: 25px;">
+      <!-- Laps will be appended here -->
+    </div>
+
+  </div>
+
+  <nav class="floating-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html" id="loginLink">Login</a>
+  </nav>
+
+  <script src="stopwatch.js"></script>
+  <script>
+    // Navigation logic
+    const currentUser = localStorage.getItem('echoscope_user');
+    if (currentUser) {
+      document.getElementById('loginLink').textContent = 'Profile';
+    }
+  </script>
+</body>
+
+</html>

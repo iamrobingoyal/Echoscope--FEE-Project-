@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoScope - To-Do</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Old nav removed -->
+
+    <div class="task-header">
+      <h2>Today's Quests</h2>
+      <div class="stats-badge purple">Level 1</div>
+    </div>
+
+    <form id="taskForm" style="display: flex; gap: 10px; margin-bottom: 20px;">
+      <input type="text" id="taskInput" class="input-field" style="flex: 1;" placeholder="Enter a new task...">
+      <button type="submit" class="btn">Add</button>
+    </form>
+
+    <div class="task-list" id="taskList">
+      <!-- Tasks will be dynamically rendered here via JavaScript -->
+    </div>
+
+  </div>
+
+  <nav class="floating-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html" id="loginLink">Login</a>
+  </nav>
+
+  <script src="tasks.js"></script>
+  <script>
+    // Navigation logic
+    const currentUser = localStorage.getItem('echoscope_user');
+    if (currentUser) {
+      document.getElementById('loginLink').textContent = 'Profile';
+    }
+  </script>
+</body>
+
+</html>

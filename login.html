@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoScope - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="home-content">
+      <h2>Welcome Back! 🌸</h2>
+      <p class="subtitle">Log in to save your doodles and progress.</p>
+    </div>
+
+    <form id="loginForm" class="form-card">
+      <div class="input-group">
+        <label for="username">Username ✨</label>
+        <input type="text" id="username" class="input-field" placeholder="Enter your cute name" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password 🎀</label>
+        <input type="password" id="password" class="input-field" placeholder="Secret password" required>
+      </div>
+      <button type="submit" class="btn full-width">Login</button>
+    </form>
+  </div>
+
+  <nav class="floating-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html" class="active">Login</a>
+  </nav>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      if (username) {
+        // Save the user in localStorage to simulate login
+        localStorage.setItem('echoscope_user', username);
+        window.location.href = 'index.html';
+      }
+    });
+
+    // If already logged in
+    if (localStorage.getItem('echoscope_user')) {
+      const homeContent = document.querySelector('.home-content');
+
+      // Show profile picture
+      const profileImg = document.createElement('img');
+      profileImg.src = 'profile-pic.png';
+      profileImg.className = 'profile-pic';
+      homeContent.insertBefore(profileImg, document.querySelector('h2'));
+
+      document.querySelector('h2').textContent = `Hello again, ${localStorage.getItem('echoscope_user')}! 🌸`;
+      document.querySelector('p.subtitle').textContent = "You are already logged in and your progress is saved.";
+      document.getElementById('loginForm').style.display = 'none';
+
+      const logoutBtn = document.createElement('button');
+      logoutBtn.className = 'btn outline full-width';
+      logoutBtn.textContent = 'Log Out';
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('echoscope_user');
+        window.location.reload();
+      });
+      document.querySelector('.container').appendChild(logoutBtn);
+    }
+  </script>
+</body>
+
+</html>

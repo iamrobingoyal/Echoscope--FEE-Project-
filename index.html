@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoScope - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="home-content">
+      <div class="stats-container">
+        <div class="stats-badge">🌱 Focus Tracker</div>
+        <div class="stats-badge purple">⭐ Student App</div>
+      </div>
+      <h1>EchoScope</h1>
+      <p class="subtitle">Understand your digital habits and boost your focus with light gamification.</p>
+
+      <div class="features-grid">
+        <a href="tasks.html" class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>To-Do List</h3>
+          <p>Track your daily tasks.</p>
+        </a>
+        <a href="analysis.html" class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Analysis</h3>
+          <p>Log your screen time.</p>
+        </a>
+        <a href="timer.html" class="feature-card">
+          <div class="feature-icon">⏳</div>
+          <h3>Focus Timer</h3>
+          <p>Pomodoro sessions.</p>
+        </a>
+        <a href="stopwatch.html" class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>Stopwatch</h3>
+          <p>Track your active time.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <nav class="floating-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html" id="loginLink">Login</a>
+  </nav>
+
+  <script>
+    // Check for logged-in user to simulate saved progress
+    const currentUser = localStorage.getItem('echoscope_user');
+    if (currentUser) {
+      document.querySelector('h1').textContent = `Welcome, ${currentUser}! ✨`;
+      document.getElementById('loginLink').textContent = 'Profile';
+    }
+  </script>
+</body>
+
+</html>

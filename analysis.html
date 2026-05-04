@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoScope - Digital Habits Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add some specific styles for the quiz options */
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      background: #fff;
+      padding: 10px 15px;
+      border: 2px solid #e6e6fa;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Nunito', sans-serif;
+      color: #555;
+    }
+
+    .quiz-option:hover {
+      background: #f0f8ff;
+      border-color: #87ceeb;
+    }
+
+    input[type="radio"] {
+      accent-color: #ff69b4;
+      transform: scale(1.2);
+    }
+
+    #resultDashboard {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="quizContainer">
+    <div class="home-content">
+      <h2>Daily Habits Quiz 🎀</h2>
+      <p class="subtitle">Let's see how mindful you were today!</p>
+    </div>
+
+    <form id="quizForm" class="form-card">
+      <div class="input-group">
+        <label>1. How many hours did you spend on your phone today? 📱</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="3" required> Less than 1 hour</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="2"> 1 to 3 hours</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="1"> Too many to count!</label>
+      </div>
+
+      <div class="input-group">
+        <label>2. Did you scroll right before sleeping last night? 🌙</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="3" required> No, I slept well</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="2"> Just a little bit</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="1"> Yes, guilty!</label>
+      </div>
+
+      <div class="input-group">
+        <label>3. How often did you get distracted while studying? 📚</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="3" required> Never</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="2"> Sometimes</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="1"> Very Often</label>
+      </div>
+
+      <div class="input-group">
+        <label>4. Did you take breaks? 🍵</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="3" required> Yes, feeling fresh!</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="1"> Forgot to take breaks</label>
+      </div>
+
+      <button type="submit" class="btn full-width">See My Result ✨</button>
+    </form>
+  </div>
+
+  <!-- Hidden Result Dashboard -->
+  <div class="container" id="resultDashboard">
+    <div class="home-content">
+      <h2>Your Daily Result 🌸</h2>
+      <p class="subtitle" id="resultMessage">Calculating...</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="stat-card full-span">
+        <div class="label">Focus Score</div>
+        <div class="value gradient-text" id="focusScoreVal">0/12</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Status</div>
+        <div class="value" id="statusVal" style="font-size: 1.5rem;">Good</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Screen Time</div>
+        <div class="value" id="screenTimeVal" style="font-size: 1.5rem;">Low</div>
+      </div>
+    </div>
+
+    <button id="retakeBtn" class="btn outline full-width" style="margin-top: 20px;">Retake Quiz 🔄</button>
+  </div>
+
+  <nav class="floating-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html" id="loginLink">Login</a>
+  </nav>
+
+  <script>
+    // Navigation logic
+    const currentUser = localStorage.getItem('echoscope_user');
+    if (currentUser) {
+      document.getElementById('loginLink').textContent = 'Profile';
+    }
+
+    // Quiz Logic
+    document.getElementById('quizForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Calculate Score
+      const q1 = parseInt(document.querySelector('input[name="q1"]:checked').value);
+      const q2 = parseInt(document.querySelector('input[name="q2"]:checked').value);
+      const q3 = parseInt(document.querySelector('input[name="q3"]:checked').value);
+      const q4 = parseInt(document.querySelector('input[name="q4"]:checked').value);
+
+      const totalScore = q1 + q2 + q3 + q4; // Max is 12, Min is 4
+
+      // Feedback logic
+      let message = "";
+      let status = "";
+      let screenTime = (q1 === 3) ? "Low ✨" : (q1 === 2) ? "Medium" : "High 🚨";
+
+      if (totalScore >= 10) {
+        message = "Amazing! You have great digital habits today! Keep it up! 💖";
+        status = "Excellent 🌟";
+      } else if (totalScore >= 7) {
+        message = "Not bad! You're doing okay, but try to take more breaks! 🌸";
+        status = "Good 👍";
+      } else {
+        message = "Oops! Looks like your screen time took over today. Try to rest your eyes! 🙈";
+        status = "Needs Work 🥺";
+      }
+
+      // Update UI
+      document.getElementById('focusScoreVal').textContent = `${totalScore}/12`;
+      document.getElementById('resultMessage').textContent = message;
+      document.getElementById('statusVal').textContent = status;
+      document.getElementById('screenTimeVal').textContent = screenTime;
+
+      // Switch Views
+      document.getElementById('quizContainer').style.display = 'none';
+      document.getElementById('resultDashboard').style.display = 'flex';
+
+      // Show custom alert if high score
+      if (totalScore >= 10) {
+        showCustomAlert("Perfect Score! You are doing amazing!");
+      }
+    });
+
+    document.getElementById('retakeBtn').addEventListener('click', () => {
+      document.getElementById('quizForm').reset();
+      document.getElementById('resultDashboard').style.display = 'none';
+      document.getElementById('quizContainer').style.display = 'flex';
+    });
+
+    const showCustomAlert = (message) => {
+      const alertBox = document.createElement('div');
+      alertBox.className = 'custom-alert';
+      alertBox.textContent = `✅ ${message}`;
+      document.body.appendChild(alertBox);
+
+      setTimeout(() => {
+        alertBox.remove();
+      }, 3000);
+    };
+  </script>
+</body>
+
+</html>

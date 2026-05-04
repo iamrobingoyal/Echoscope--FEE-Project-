@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoScope - About</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="home-content">
+      <h2>About EchoScope 🎀</h2>
+      <p class="subtitle">A cute way to track your digital habits!</p>
+    </div>
+
+    <div class="feature-card" style="text-align: left; align-items: flex-start;">
+      <h3 style="margin-bottom: 10px;">What is EchoScope? ✨</h3>
+      <p style="color: #555;">EchoScope is a productivity app designed to help you stay focused while keeping things
+        adorable. With our cute doodle theme, staying productive is no longer boring!</p>
+
+      <h3 style="margin-top: 20px; margin-bottom: 10px;">Features 🌸</h3>
+      <ul style="color: #555; padding-left: 20px; line-height: 1.8;">
+        <li>📋 <strong>To-Do List:</strong> Track your daily tasks with cute animations.</li>
+        <li>⏳ <strong>Focus Timer:</strong> Study with the Pomodoro technique.</li>
+        <li>📊 <strong>Analysis:</strong> Keep a log of your screen time.</li>
+        <li>💾 <strong>Progress Saving:</strong> Log in to keep your data saved!</li>
+      </ul>
+    </div>
+  </div>
+
+  <nav class="floating-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="login.html" id="loginLink">Login</a>
+  </nav>
+
+  <script>
+    // Check for logged-in user
+    const currentUser = localStorage.getItem('echoscope_user');
+    if (currentUser) {
+      document.getElementById('loginLink').textContent = 'Profile';
+    }
+  </script>
+</body>
+
+</html>
