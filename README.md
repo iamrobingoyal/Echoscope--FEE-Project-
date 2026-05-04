@@ -26,13 +26,12 @@ EchoScope features a unique, hand-drawn "kid doodle" aesthetic with:
 
 1.  Clone this repository to your local machine.
 2.  Open the project directory.
-3.  Launch `index.html` in your favorite web browser, or use an extension like **Live Server** in VS Code for the best experience.
+3.  Launch `html/index.html` in your favorite web browser, or use an extension like **Live Server** in VS Code for the best experience.
 4.  No build steps or dependencies are required!
 
 ## Project Structure 📁
 
-*   `index.html`: The main dashboard/home page.
-*   `tasks.html`, `analysis.html`, `timer.html`, `stopwatch.html`, `login.html`, `about.html`: Functional pages.
+*   `html/`: Directory containing all functional pages (`index.html`, `tasks.html`, `analysis.html`, etc.).
 *   `css/styles.css`: The global stylesheet containing all app styles, animations, and quiz-specific layouts.
 *   `js/`: Directory containing JavaScript files for tasks, timers, stopwatch, login, and analysis logic.
 *   `assets/`: Directory for images like `profile-pic.png`.

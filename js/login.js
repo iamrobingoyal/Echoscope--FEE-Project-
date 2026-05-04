@@ -14,7 +14,7 @@ if (localStorage.getItem('echoscope_user')) {
 
   // Show profile picture
   const profileImg = document.createElement('img');
-  profileImg.src = 'assets/profile-pic.png';
+  profileImg.src = '../assets/profile-pic.png';
   profileImg.className = 'profile-pic';
   homeContent.insertBefore(profileImg, document.querySelector('h2'));
 
